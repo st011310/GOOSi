@@ -140,8 +140,10 @@ $\oint\limits_{C} P \,dx + Q \,dy = \iint\limits_{D} \left( \frac{\partial Q}{\p
 
 Для кривой $C$, ограничивающей область $D$ зададим направление обхода по часовой стрелке. Тогда:
 
-$\iint\limits_{D} \frac{\partial P}{\partial y} \,dx\,dy = \int\limits_{a}^{b}dx \int\limits_{y_1(x)}^{y_2(x)} \frac{\partial P}{\partial y} \,dy = \int\limits_{a}^{b} (P(x,y_2(x)) - P(x,y_1(x))) \,dx =$
-$= \int\limits_{a}^{b} P(x,y_2(x)) \,dx - \int\limits_{a}^{b} P(x,y_1(x)) \,dx \quad (1)$
+\[\iint\limits_{D} \frac{\partial P}{\partial y} \,dx\,dy
+	= \int\limits_{a}^{b}dx \int\limits_{y_1(x)}^{y_2(x)} \frac{\partial P}{\partial y} \,dy 
+	= \int\limits_{a}^{b} (P(x,y_2(x)) - P(x,y_1(x))) \,dx =\]
+\[= \int\limits_{a}^{b} P(x,y_2(x)) \,dx - \int\limits_{a}^{b} P(x,y_1(x)) \,dx \quad (1)\]
 
 Заметим, что оба полученных интеграла можно заменить криволинейными интегралами:
 $\int\limits_{C_1} P(x,y) \,dx = -\int\limits_{-C_1} P(x,y) \,dx = -\int\limits_{a}^{b} P(x,y_1(x)) \,dx \quad (2)$

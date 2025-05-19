@@ -1,172 +1,196 @@
-\subsection{OSN 14 Ортогональные преобразования евклидова пространства. Ортогональные матрицы и их свойства.}
+\subsection{OSN 14 Вероятностное пространство. Случайные величины. Закон больших чисел в форме Чебышева.}
 
-Базисом линейного пространства называется упорядоченная линейно независимая система векторов пространства, через которую линейно выражается любой вектор пространства. 
+\centerline{\textbf{Вероятностное пространство}}
 
-Ортонормированным базисом называется
-базис, векторы которого имеют единичную длину и в случае n>1 попарно перпендикулярны. 
+\textbf{Пространство элементарных исходов $\Omega$} -- любое непустое множество, содержащее все возможные результаты случайного эксперимента.
 
-\textbf{Ортогональные матрицы и их свойства.}
-\begin{itemize}
-    \item Матрица $Q \in \mathcal{C}^{n \times n}$ называется \textbf{унитарной}, если \newline $QQ^H = Q^HQ=I$
-    \item Матрица $Q \in \mathcal{R}^{n \times n}$ называется \textbf{ортогональной}, если \newline $QQ^T = Q^TQ=I$
- 
-\end{itemize}   
+Элементы $\omega \in \Omega$ -- \textbf{элементарные исходы} -- исходы случайного эксперимента, из которых в эксперименте происходит ровно один. 
 
-$Q^H$ -- \textit{эрмитова-сопряженная матрица}: $q_{ji} = \overline{q}_{ij}$   \newline
-$Q^T$ -- \textit{транспонированная матрица}: $q_{ij} = q_{ji}$
+Множество $\mathcal{F}$, элементами которого являются подмножества множества $\Omega$ (не обязательно все) называется \textbf{$\sigma$-алгеброй} (сигма-алгеброй), если выполнены следующие условия:
 
-\textbf{Свойства ортогональной матрицы:}
-    \begin{enumerate}
-        \item $Q$ --- обратима, причём $Q^{-1}=Q^T$;
-        
-        \begin{proof}
-        $\left|Q^T\right|=\left|Q\right| \implies \left|Q\right|^2 = 1 \implies \left|Q\right| \neq 0 \implies \exists Q^{-1}, Q^TQ=I \implies$ \{домн. справа на $Q^{-1}$ \} $\implies Q^T=Q^{-1}$
-        \end{proof}
-        
-        \item $det(Q) = \pm1$;
-        
-        \begin{proof}
-        $\left|Q^T\right|=\left|Q\right| \implies \left|Q\right|^2 = 1 \implies \left|Q\right| = \pm 1$
-        \end{proof}
-        
-        \item $\forall \lambda$ --- собственное значение $Q\implies \lambda=\pm1$.
-        \begin{proof}
-        Пусть $Qx=\lambda x$ тогда $(x,x)=(x,Q^TQx) = (Qx,Qx) = (\lambda x,\lambda x) = \lambda^2(x,x) \Rightarrow (x,x) = \lambda^2(x,x) \Rightarrow \lambda^2 = 1$
+1. $\Omega \in \mathcal{F}$;
 
-        %$Qx=\lambda x, Q^Tx=\lambda x \implies Q^TQx=\lambda^2x=Ix \implies (\lambda^2 - 1) = \theta \implies %\lambda = \pm1$
-        \end{proof}
-    \end{enumerate}
- 
-Линейный оператор $\mathcal{U}$, действующий в унитарном (евклидомов) пространстве, называется \textbf{унитарным} (\textbf{ортогональным}) оператором, если $\mathcal{U}^*\mathcal{U} = \mathcal{U}\mathcal{U}^* = \mathcal{I}$
-\begin{itemize}
-\item Оператор $\mathcal{U}$ унитарен (ортогонален) $\iff$ в любом ортонормироавнном базисе он имеет унитарную (ортогональную) матрицу.
-\item Для унитарного (ортогонального) оператора $\mathcal{U}$ справедливы равенства: \newline
-$\mathcal{U}^* = \mathcal{U}^{-1}$, $|det\mathcal{U}| = 1$.
-\item Унитарный (ортогональный) оператор нормален.
-\end{itemize}
+2. если $A \in \mathcal{F}$, то $\neg A \in \mathcal{F}$;
 
-\textbf{Критерий унитарности}. В конечномерном унитарном (евклидовом) пространстве $\mathcal{V}$ следующие утверждения равносильны:
-\begin{itemize}
-\item Оператор $\mathcal{U}$ унитарен (ортогонален)
-\item $\mathcal{U}^*\mathcal{U}$ = $\mathcal{I}$
-\item $\mathcal{U}\mathcal{U}^*$ = $\mathcal{I}$
-\item оператор $\mathcal{U}$ изометричен
-\item оператор $\mathcal{U}$ сохраняет длину, т.е. $|\mathcal{U}x| = |x|, \forall x \in \mathcal{V}$
-\item оператор $\mathcal{U}$ переводит любой ортонормированный базис $\mathcal{V}$ в ортонормированный базис
-\item оператор $\mathcal{U}$ переводит хотя бы один ортонормированный базис $\mathcal{V}$ в ортонормированный базис
-\end{itemize}
+3. $A_1,A_2,\dots~\in \mathcal{F} \implies \bigcup_{i=1}^{\infty} A_i \in \mathcal{F}$ (объединение по \textit{счетному} числу подмножеств)
+
+
+Минимальная $\sigma$-алгебра, содержащая множество всех интервалов на вещественной прямой, называется \textbf{борелевской $\sigma$-алгеброй} в $\mathbb{R}$ и обозначается $\mathcal{B}(\mathbb{R})$. 
+
+\textbf{Борелевское множество} --- элемент борелевской $\sigma$-алгебры.
+
+\textbf{Вероятность} $P$ --- действительная функция случайного события: $\mathcal{F} \rightarrow \mathbb{R}$, удовлетворяющая следующим условиям:
+
+1. $P(\Omega) = 1$;
+
+2.  $\forall A \in \mathcal{F}\implies P(A) \geqslant 0$;
+
+3. $\forall A_1,A_2,\dots,A_n,\dots \in \mathcal{F}:~A_i \cap A_j = \varnothing (i \neq j) \implies P(\displaystyle\bigcup_{i=1}^{\infty}A_i) = \displaystyle\sum_{i=1}^{\infty}P(A_i)$ (счётная аддитивность).
+
+
+\textbf{Вероятностное пространство} -- тройка ($\Omega, \mathcal{F}, P$), где $\Omega$ -- множество элементарных исходов, $\mathcal{F}$ -- $\sigma$-алгебра над $\Omega$, вероятность $P$ определена на $\mathcal{F}$.
+
+\textbf{Пример: }
+Пусть $\Omega = (\omega_1,\dots,\omega_s)$, $\mathcal{F}$ --- всевозможные подмножества множества $\Omega$.
+
+$P(\omega_1) = \dots = P(\omega_s) = \frac{1}{s} \implies P(A) = \frac{|A|}{|\Omega|}$ --- классическое определение вероятности.
+
+\centerline{\textbf{Случайные величины}}
+
+Пара $(X, \mathcal{U})$, где X – произвольное множество, а $\mathcal{U}$ -- $\sigma$-алгебра над ним -- \textbf{измеримое пространство}. 
+
+Например, $(\Omega, \mathcal{F})$ и $(R, \mathcal{B})$ -- измеримые пространства. 
+
+Элементы  $\sigma$-алгебры $\mathcal{U}$ называются \textbf{измеримыми множествами}.
+
+Пусть даны измеримые пространства $(\Omega, \mathcal{F})$ и $(R, \mathcal{B})$. Функция $\xi : \Omega \rightarrow R$ называется \textbf{случайной величиной}, если прообраз любого борелевского множества $B \in \mathcal{B}$ является событием.
+
+\textbf{Распределением} случайной величины $\xi$ называется функция $P_{\xi}:~\mathcal{B} \rightarrow \mathbb{R}$, определенная $\forall B \in \mathcal{B}$ по правилу $P_{\xi}(B) = P(\xi \in B)$.
+
+\textbf{Функцией распределения} случайной величины $\xi$ называется отображение $F_{\xi}:~\mathbb{R} \rightarrow \mathbb{R}$, определённое по правилу: $F_{\xi}(x) = P(\xi < x)$ или $F_{\xi}(x) = P_{\xi}((-\infty, x))$.
+
+Случайная величина $\xi$ называется \textbf{дискретной случайной величеной}, если существует не более чем счетное множество $B$ такое, что $P_{\xi}(B) = 1$. Распределение, соответствующее дискретной случайной величине, также называется дискретным.
+
+\textit{Дискретная функция распределения} имеет вид:
+    \begin{equation*}
+        F_\xi(x) = P(\xi < x) = \sum\limits_{x_i < x}{}p_{i} = \sum\limits_{x_i < x}{} P(\xi = x_{i}).
+    \end{equation*}
+
+
+Распределение $\xi$ называется \textbf{абсолютно непрерывным}, если существует
+$f(x) \geqslant 0$ такая, что для любого борелевского множества $B$ справедливо
+\begin{equation*}
+    P_\xi(B) = \int\limits_B f(x) \lambda(dx),
+\end{equation*}
+где $f(x)$~--- \textit{плотность распределения}, $\lambda$~--- мера Лебега. 
+\textit{Абсолютно непрерывная функция распределения} имеет вид:
+\begin{equation*}
+    F_\xi(x) = P(\xi < x) = \int\limits_{-\infty}^x f(t)dt.
+\end{equation*}
+
+
+\textbf{Пример}: равномерное распределение
+$f(x) = \begin{cases}\frac{1}{b - a},& x\in[a,b]\\ 0,& x\notin[a,b] \end{cases}$
+
+% \begin{figure}
+    % \centering
+    % \includegraphics[width=0.01\textwidth]{pics/abs.png}
+    % \caption{Пример равномерного распределения}
+    % \label{abs}
+% \end{figure}
+\includegraphics[width=\columnwidth]{pics/abs.png}
+
+
+\textbf{Математическим ожиданием} случайной величины $\xi$ называется число $E\xi = \int\limits_{\Omega} \xi(\omega) P(d\omega)$ или $\int\limits_{-\infty}^{+\infty} x dF_{\xi}(x)$.
+Если интеграл расходится, то говорят, что математического ожидания не существует.
+
+В случае дискретной сл. вел.: $E\xi = \displaystyle\sum_{i} x_i p_i$.
+
+В случае абсолютно непрерывной сл. вел.: $E\xi = \int x f(x) dx$
+
+\textbf{Дисперсией} случайной величины $\xi$ называется число $D\xi = E(\xi - E\xi)^2$, $\sigma = \sqrt{D \xi}$ -- \textbf{среднеквадратическое отклонение}.
+
+% Пусть $\xi$ и $\eta$ -- случайные величины. 
+% Дисперсия их суммы в общем случае равна $D(\xi+n)=D \xi+D \eta + 2 \bigl( E (\xi \eta)-E \xi \, E \eta \bigr)$. 
+Величина $\operatorname{cov}(\xi, \eta) \equiv E (\xi \eta)-E \xi \, E \eta$ называется \textbf{ковариацией} случайных величин $\xi$ и $\eta$. Если $\xi$ и $\eta$ независимы, то $\operatorname{cov}(\xi, \eta) = 0$. Обратное, вообще говоря, неверно.
+
+
+\centerline{\textbf{Закон больших чисел в форме Чебышева}}
+
+\textbf{Неравенство Чебышёва}
+Если $\exists D\xi$, то $\forall \varepsilon > 0$
+\begin{equation*}
+    P(|\xi-E \xi| \geqslant \varepsilon) \leqslant \frac{D \xi}{\varepsilon^{2}}.
+\end{equation*}
+
 
 \begin{proof}
-\begin{itemize}
-\item $(1\Leftrightarrow 2)$ $(\implies)$ очевидно \\ $(\impliedby)$ $UU^*=I \implies \exists U^{-1}, UU^*=I$ \{домн. слева на $U^-1$\} $\implies U^*=U^{-1} \implies U^*U=I$ \\
-\item $(1\Leftrightarrow 3)$ аналогично \\
-\item $(3\Leftrightarrow 4)$ $(\implies)$ $(Ux, Uy)=(x,UU^*y)=(x,y)$ \\ $(\impliedby)$ $(Ux,Uy)=(x,y) \implies (x,UU^*y)=(x,Iy) \implies UU^*=I$ \\
-\item $(4\Leftrightarrow 5)$ $(\implies)$ очевидно, т.к. $\left|x\right|=\sqrt{(x,x)}$ \\ $(\impliedby)$ a). $V$ -- евкл.: $(x,y)=(\left|x+y\right|^2-\left|x\right|^2-\left|y\right|^2)/2$ б). $V$ -- унит.: $(x,y)=(\left|x+y\right|^2-\left|x-y\right|^2+i\left|x+iy\right|^2-i\left|x-iy\right|^2)/2$ \\
-\item $(4\Leftrightarrow 5)$ $(\implies)$ $e$ -- о/н $\implies (Ue_i,Ue_j)=(e_i,e_j)=\delta_{ij}$ \\ $(\impliedby)$ Пусть $e_1, \dots, e_n$ -- о/н. $\forall x \in V: x = \sum x_ie_i, Ux = \sum x_iUe_i \implies \left|x\right|^2 = \sum \left|x_i\right|^2, \left|Ux\right|^2 = \sum \left|x_i\right|^2 \implies U$ сохр. длину \\
-\item $(6\Leftrightarrow 7)$ $(\implies)$ очевидно \\ $(\impliedby)$ доказано в предыдущем пункте $(\impliedby)$ \\
-\end{itemize}
+    Для $\varepsilon > 0$ неравенство $|\xi - E \xi| \geqslant \varepsilon \iff (\xi - E \xi)^2 \geqslant \varepsilon^2$, поэтому $P(|\xi-E \xi| \geqslant \varepsilon) = 
+        P\left((\xi-E \xi)^{2} \geqslant \varepsilon^{2}\right) \leqslant 
+        \cfrac{E (\xi-E \xi)^{2}}{\varepsilon^{2}} =
+        \cfrac{D \xi}{\varepsilon^{2}}$.
 \end{proof}
 
-\textbf{Примеры ортогональных матриц.}
-\begin{itemize}
-    \item $Q \in \mathbb{R}^{1\times1} \implies Q = \begin{bmatrix} \pm1\\ \end{bmatrix}$
+\textbf{Следствие}:
+Если $\varepsilon = 3\sigma$, где $\sigma$ --- стандартное отклонение, то получим
+\begin{equation*}
+    P\bigl( |\xi-E \xi|> 3 \sigma \bigr) \leqslant 
+    \frac{D \xi}{9 \sigma^2} = 
+    \frac{D \xi}{9 \, D \xi} =
+    \frac{1}{9} \iff 
+    P\bigl( |\xi-E \xi| \leqslant 3 \sigma \bigr) \geqslant 
+    1-\frac{1}{9} = 
+    \frac{8}{9}.
+\end{equation*}
+Это соотношение называется \textbf{правилом трёх сигм}.
+
+Последовательность случайных величин $\{\xi_n\}_{n = 1}^{+\infty}$ 
+\textbf{сходится по вероятности} к случайной величине $\xi$ ($\xi_n \xrightarrow[]{\text{P}} \xi$), если
+$$
+    \forall \varepsilon>0 \quad P \biggl( \Bigl\{ \omega \colon |\xi_{n}(\omega)-\xi(\omega)|>\varepsilon \Bigr\} \biggr) \xrightarrow[n \to +\infty]{} 0.
+$$
+
+\textbf{Закон больших чисел в форме Чебышёва}:
+$\forall$ последовательности $\xi_1, \xi_2, \ldots$ попарно независимых и одинаково распределённых случайных величин для которых $E \xi_i^2 < \infty \implies$ 
+\begin{equation*}
+    \frac{\xi_{1}+\ldots+\xi_{n}}{n} \xrightarrow[n \to + \infty]{\text{P}} E \xi_{1}.
+\end{equation*}
+
+
+\begin{proof}
+    $S_n = \xi_1 + \ldots + \xi_n$, Из линейности матожидания получим
+    \begin{equation*}
+        E \left(\frac{S_{n}}{n}\right)=\frac{E \xi_{1}+\ldots+E \xi_{n}}{n}=\frac{n E \xi_{1}}{n}=E \xi_{1}.
+    \end{equation*}
     
-    \item $Q \in \mathbb{R}^{2\times2} \implies 
-    Q = \begin{bmatrix} 
-        q_{11} & q_{12} \\
-        q_{21} & q_{22} \\
-    \end{bmatrix}$
-    
-    $QQ^T=Q^TQ=I \implies 
-    \begin{cases}
-    q_{11}^2 + q_{21}^2 = 1&\\
-    q_{11}q_{12} + q_{21}q_{22} = 0&\\
-    q_{12}^2 + q_{22}^2 = 1&\\
-    \end{cases}
-    \implies 
-    \begin{cases}
-    q_{11} = \cos\varphi&\\
-    q_{21} = \sin\varphi&\\
-    q_{12} = -kq_{21} = -k\sin\varphi&\\
-    q_{22} = kq_{11} = k\cos\varphi&\\
-    \end{cases}$
-    
-    \begin{enumerate}
-        \item $k=1 \implies 
-            Q = \begin{bmatrix} 
-                \cos\varphi & -\sin\varphi \\
-                \sin\varphi & \cos\varphi \\
-            \end{bmatrix}$ (поворот).
-            
-        При $\varphi = \pi k$ получаются матрицы 
-            $\begin{bmatrix} 
-                1 & 0 \\
-                0 & 1 \\
-            \end{bmatrix}$, 
-            $\begin{bmatrix} 
-                -1 & 0 \\
-                 0 & -1 \\
-            \end{bmatrix}$.
-            
-        При $\varphi \ne \pi k$ матрица не диагонализируется, так как у неё нет вещественных собственных значений.
-            
-        \item $k=-1 \implies 
-            Q = \begin{bmatrix} 
-                \cos\varphi & \sin\varphi \\
-                \sin\varphi & -\cos\varphi \\
-            \end{bmatrix}$ (поворот и отражение).
-        
-        В этом случае собственные значения матрицы равны $\pm1 \implies$ 
-        
-        получаются матрицы 
-        $\begin{bmatrix} 
-            1 & 0 \\
-            0 & -1 \\
-        \end{bmatrix}$, 
-        $\begin{bmatrix} 
-            -1 & 0 \\
-            0 & 1 \\
-        \end{bmatrix}$.
-    \end{enumerate}
-    Таким образом, в случае $Q \in \mathbb{R}^{2\times2}$ для ортогонального оператора в евклидовом пространстве существует ортонормированный базис, в котором он имеет матрицу 
-    
-    либо 
-    $\begin{bmatrix} 
-        \pm1 & 0 \\
-        0 & \pm1 \\
-    \end{bmatrix}$, 
-    
-    либо 
-    $\begin{bmatrix} 
-        \cos\varphi & -\sin\varphi \\
-        \sin\varphi & \cos\varphi \\
-    \end{bmatrix},~(\varphi\ne\pi k)$.
-\end{itemize}
-
-\textbf{Теорема.} $\forall$ ортогонального оператора $Q$ в евклидовом пространстве $\exists$ ортонормированный базис $e$, в котором матрица оператора имеет вид:
-
-$$ Q = \begin{bmatrix} 
-            1 &    &   &   &   &   &   &   &   &   \\
-              & \ddots  &  &   &   &   &   &   &   &   \\
-              &  & 1  &    &   &   &   &   &   &   \\
-              &   &   & -1 &   &   &   &   &   &   \\
-              &   &   &  & \ddots &   &   &   &   \\
-              &   &   &   &   & -1 &   &   &   &   \\
-              &   &   &   &   &   & \cos\varphi_1 & -\sin\varphi_1 &  \\
-              &   &   &   &   &   & \sin\varphi_1 & \cos\varphi_1 &  \\
-              &   &   &   &   &   &   &   & \ddots\\
-        \end{bmatrix} $$
-
-\begin{proof} Доказательство методом математической индукции по размерности пространства $dim(V)=n$.
-
-Для $n=1,~n=2$ теорема верна (выше рассмотрены все возможные случаи).
-
-Пусть теорема верна для $n-1,~n-2$. Докажем для $n$. 
-
-$Q$ действует в вещественном пространстве, а в нём существует либо одномерное, либо двумерное инвариантное подпространство $L$ ($\forall x \in L~Qx \in L$), для него можно найти базис. По свойствам ортогонального оператора $L^{\perp}$ (ортогональное подпространство) --- инвариантно относительно $Q$. $dim(L^{\perp})$ равна либо $n-1$, либо $n-2 \implies$ теорема для него верна. Совокупность базисов для $L$ и $L^{\perp}$ образует искомый базис с точностью до порядка базисных векторов.
+    Пусть $\varepsilon > 0$. Воспользуемся неравенством Чебышёва:
+    \begin{multline*}
+        P\left(\left|\frac{S_{n}}{n}-E \left(\frac{S_{n}}{n}\right)\right| \geqslant \varepsilon\right) \leqslant \frac{D\left(\frac{S_{n}}{n}\right)}{\varepsilon^{2}}
+        = \frac{D S_{n}}{n^{2} \varepsilon^{2}}
+        = \frac{D \xi_{1}+\ldots+D \xi_{n}}{n^{2} \varepsilon^{2}}= \\
+        = \frac{n D \xi_{1}}{n^{2} \varepsilon^{2}}
+        = \frac{D \xi_{1}}{n \varepsilon^{2}} \xrightarrow[n \to +\infty]{} 0,
+    \end{multline*}
+    т.к. $D\xi_1 < \infty$. Дисперсия суммы превратилась в сумму дисперсий в силу попарной независимости слагаемых, из-за которой все ковариации $\operatorname{cov}(\xi_i, \xi_j)$ по свойству ковариации обратились в нуль при $i \neq j$.
 \end{proof}
 
+
+\textbf{Центральная предельная теорема}:
+    Пусть $\xi_{1}, \xi_{2}, \ldots$~--- последовательность независимых одинаково распределенных невырожденных случайных величин с $E \xi_{1}^{2}<\infty$ и $S_{n}=\xi_{1}+\ldots+\xi_{n}$. 
+    Тогда
+    \begin{equation*}
+        P\left(\frac{S_{n}-E S_{n}}{\sqrt{D S_{n}}} \leqslant x\right)
+        \xrightarrow[n \to +\infty]{}
+        \Phi(x) = \frac{1}{\sqrt{2 \pi}} \int\limits_{-\infty}^{x} e^{-\frac{u^{2}}{2}} du~~ \forall x \in R
+    \end{equation*}
+
+\begin{proof}
+Пусть $E \xi_{1}=m,\, D \xi_{1}=\sigma^{2}$. 
+Введём $X = \xi_1 - m$ и $D \phi_X(t)=E e^{i tX}$ и 
+$
+    D \phi_{n}(t)=E e^{i t \frac{S_{n}-E S_{n}}{\sqrt{D S_{n}}}} = 
+    \left[D \phi_X\left(\frac{t}{\sigma \sqrt{n}}\right)\right]^{n}
+$
+
+В силу разложения характеристической функции (при $\exists$ соответствующих моментов)
+$
+    D \phi_{X}(t)=1+i t E X+\ldots+\frac{(i t)^{n}}{n !} E X^{n}+R_{n}(t)
+$
+
+Т.к. $E X = E \left[ \xi_1 - m\right] = 0$, при $n=2$: 
+$
+    D \phi(t)=1-\frac{\sigma^{2} t^{2}}{2}+\overline{o}\left(t^{2}\right), \quad t \to 0
+$.
+
+$\forall t \in R$ при $n \to +\infty \implies $
+$
+    D \phi_{n}(t)=\left[1-\frac{\sigma^{2} t^{2}}{2 \sigma^{2} n}+\overline{o}\left(\frac{1}{n}\right)\right]^n \to e^{-\frac{t^{2}}{2}}
+$
+
+Функция $e^{-\frac{t^{2}}{2}}$ -- характеристическая функциия $N_{0,1}$. 
+В силу теоремы о непрерывном соответствии между функциями распределения и характеристическими функциями Ц.П. теорема доказана.
+\end{proof}
 
 % -------- source --------
 \bigbreak
-[\cite[page 230-233, 292-295]{kim}]
+[\cite[page 1-53]{stat_book}]
